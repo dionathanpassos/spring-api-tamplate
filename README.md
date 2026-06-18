@@ -212,7 +212,7 @@ POST /v1/auth/login
 ```json
 {
   "accessToken": "jwt_token_access_aqui",
-  "refresToken": "jwt_token_refres_aqui
+  "refresToken": "jwt_token_refres_aqui"
 }
 ```
 
