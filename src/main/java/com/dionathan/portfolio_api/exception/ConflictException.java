@@ -1,7 +1,7 @@
 package com.dionathan.portfolio_api.exception;
 
-public class BusinessException extends RuntimeException{
-    public BusinessException(String message) {
+public class ConflictException extends RuntimeException{
+    public ConflictException(String message) {
         super(message);
     }
 }

@@ -38,7 +38,27 @@ public class GlobalExceptionHandler {
             BusinessException ex,
             HttpServletRequest request
     ) {
-        HttpStatus status = HttpStatus.BAD_REQUEST;
+        HttpStatus status = HttpStatus.UNPROCESSABLE_CONTENT;
+
+        ErrorResponse error = new ErrorResponse(
+                status.value(),
+                status.getReasonPhrase(),
+                ex.getMessage(),
+                request.getRequestURI(),
+                request.getMethod(),
+                LocalDateTime.now(),
+                null
+        );
+
+        return ResponseEntity.status(status).body(error);
+    }
+
+    @ExceptionHandler(ConflictException.class)
+    public ResponseEntity<ErrorResponse> hendleConflict(
+            ConflictException ex,
+            HttpServletRequest request
+    ) {
+        HttpStatus status = HttpStatus.CONFLICT;
 
         ErrorResponse error = new ErrorResponse(
                 status.value(),
