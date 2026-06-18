@@ -44,7 +44,7 @@ public class AuthService {
 
         String encodedPassword = passwordEncoder.encode(requestDTO.password());
 
-        User user = userMapper.toEntity(requestDTO, encodedPassword, Role.ROLE_ADMIN);
+        User user = userMapper.toEntity(requestDTO, encodedPassword, Role.ROLE_USER);
         User saved = userRepository.save(user);
 
         String validationToken = jwtService.generateValidationToken(user);
